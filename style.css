@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: lightskyblue;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Rows for balance, main content, and summary */
+  grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+  gap: 10px; /* Reduce gap between grid items */
+  padding: 20px;
+}
+.navigationBar {
+  background-color: lightsteelblue;
+  padding: 1em;
+}
+
+.new_login_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.newUserDiv {
+  display: flex;
+  flex-direction: column;
+}
+.loginUser {
+  display: flex;
+  flex-direction: column;
+}
+
+.balance {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  grid-column: span 2; /* Span across both columns */
+  margin-bottom: 10px; /* Reduce spacing below the balance section */
+}
+
+/* MOVEMENTS */
+.movements {
+  grid-row: 0; /* Ensure movements is directly below the balance */
+  grid-column: span 2; /* Span across both columns */
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+  padding: 10px; /* Add padding inside the movements section */
+  margin-top: 0; /* Remove unnecessary margin */
+}
+
+.movements__row {
+  padding: 2.25rem 4rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.movements__type {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.1rem 1rem;
+  border-radius: 10rem;
+  margin-right: 2rem;
+}
+
+.movements__date {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #666;
+}
+
+.movements__type--deposit {
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+}
+
+.movements__type--withdrawal {
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+}
+
+.movements__value {
+  font-size: 1.7rem;
+  margin-left: auto;
+}
+
+.operation {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.summary {
+  grid-column: span 2; /* Span across the entire width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add spacing between labels and inputs */
+}
+
+.form_label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px; /* Space between label and input */
+}
+
+.form_input {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button.form_btn {
+  margin-top: 10px; /* Add some spacing above buttons */
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.form_btn:hover {
+  background-color: #45a049;
+}
