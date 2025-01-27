@@ -10,6 +10,7 @@ body {
   grid-template-columns: 1fr 1fr; /* Two equal-width columns */
   gap: 10px; /* Reduce gap between grid items */
   padding: 20px;
+  opacity: 0;
 }
 .navigationBar {
   background-color: lightsteelblue;

@@ -1,3 +1,4 @@
+const appContainer = document.querySelector(".app");
 const firstNameInput = document.querySelector(".firstName");
 const lastNameInput = document.querySelector(".lastName");
 const createUsernameInput = document.querySelector(".createUsername");
@@ -14,7 +15,7 @@ const containerMovements = document.querySelector(".movements");
 
 //Transfers
 const transferTo = document.querySelector(".form_input--to");
-const transferAmount = document.querySelector(".form_input--amount");
+const transferAmountInput = document.querySelector(".form_input--amount");
 const btnTransfer = document.querySelector(".form_btn--transfer");
 //Loan
 const loanAmount = document.querySelector(".form_input--loan-amount");
@@ -23,7 +24,10 @@ const btnLoan = document.querySelector(".form_btn--loan");
 const closeUsernameInput = document.querySelector(".form_input--user");
 const closePinInput = document.querySelector(".form_input--pin");
 const btnClose = document.querySelector(".form_btn--close");
-//Sort
+//Summary and sort
+const summaryValueIn = document.querySelector(".summary_value-in");
+const summaryValueOut = document.querySelector(".summary_value-out");
+const summaryValueInterest = document.querySelector(".summary_value-interest");
 const btnSort = document.querySelector(".btn-sort");
 
 // New accounts
@@ -33,7 +37,9 @@ const accounts = [
   {
     firstName: "Diego",
     lastName: "Puente",
-    fullName: `${this.firstName} ${this.lastName}`,
+    get fullName() {
+      return `${this.firstName} ${this.lastName}`;
+    },
     username: "dpuente",
     pin: Number(1000),
     balance: [3000, 1000, -200, 230, -340],
@@ -42,13 +48,17 @@ const accounts = [
   {
     firstName: "Dylan",
     lastName: "Langsland",
-    fullName: `${this.firstName} ${this.lastName}`,
+    get fullName() {
+      return `${this.firstName} ${this.lastName}`;
+    },
     username: "dlangs",
     pin: Number(2000),
     balance: [1000, 300, -400, 230, -500, 600],
     creditScore: Number(650),
   },
 ];
+
+console.log(accounts[0]);
 const createUser = function () {
   const newFirstName = firstNameInput.value;
   const newLastName = lastNameInput.value;
@@ -74,19 +84,13 @@ btnMakeAcc.addEventListener("click", function (e) {
   createUser();
 });
 
-let currentAccount;
-btnLogin.addEventListener("click", function (e) {
-  e.preventDefault();
-  currentAccount = accounts.find(
-    (acc) => acc.username === loginUsernameInput.value
-  );
-  if (currentAccount?.pin === Number(loginPinInput.value)) {
-    welcomeLabel.textContent = `Welcome back ${currentAccount.firstName}`;
-  }
-  console.log(currentAccount);
-});
+const displayBalance = function (accounts) {
+  const balance = accounts.balance.reduce((acc, mov) => acc + mov);
+  labelBalanceValue.textContent = balance;
+};
 
 const displayMovements = function (movements) {
+  containerMovements.textContent = "";
   movements.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
@@ -101,4 +105,54 @@ const displayMovements = function (movements) {
   });
 };
 
-displayMovements(accounts[0].balance);
+let currentAccount;
+btnLogin.addEventListener("click", function (e) {
+  e.preventDefault();
+  currentAccount = accounts.find(
+    (acc) => acc.username === loginUsernameInput.value
+  );
+  if (currentAccount?.pin === Number(loginPinInput.value)) {
+    welcomeLabel.textContent = `Welcome back ${currentAccount.firstName}`;
+    appContainer.style.opacity = 100;
+  } else {
+    welcomeLabel.textContent = `Please use correct username and password`;
+    return;
+  }
+  displayMovements(currentAccount.balance);
+
+  displayBalance(currentAccount);
+});
+
+const calcDisplaySummary = function (accounts) {
+  const balanceIn = accounts.balance
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => acc + mov);
+
+  summaryValueIn.textContent = balanceIn;
+
+  const balanceOut = accounts.balance
+    .filter((mov) => mov < 0)
+    .reduce((acc, mov) => acc + mov);
+  summaryValueOut.textContent = balanceOut;
+};
+
+calcDisplaySummary(accounts[0]);
+
+btnTransfer.addEventListener("click", function (e) {
+  e.preventDefault();
+  const amount = Number(transferAmountInput.value);
+  const reciverAcc = accounts.find(
+    (acc) => acc.username === transferAmountInput.value
+  );
+  transferAmountInput.value = transferAmountInput.value = "";
+
+  if (
+    amount > 0 &&
+    reciverAcc &&
+    currentAccount.balance >= amount &&
+    reciverAcc?.username !== currentAccount.username
+  ) {
+    currentAccount.balance.push(-amount);
+    reciverAcc.movements.push(amount);
+  }
+});
