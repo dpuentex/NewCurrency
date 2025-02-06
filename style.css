@@ -1,33 +1,34 @@
-body {
+/* Reset some default styles */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set body styles */
+body {
   font-family: Arial, sans-serif;
-  background-color: lightskyblue;
-}
-
-.app {
-  display: grid;
-  grid-template-rows: auto 1fr auto; /* Rows for balance, main content, and summary */
-  grid-template-columns: 1fr 1fr; /* Two equal-width columns */
-  gap: 10px; /* Reduce gap between grid items */
-  padding: 20px;
-  opacity: 0;
-}
-.navigationBar {
-  background-color: lightsteelblue;
-  padding: 1em;
-}
-
-.new_login_div {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  gap: 10px;
-}
-.newUserDiv {
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
   display: flex;
   flex-direction: column;
 }
-.loginUser {
+
+.navigationBar {
+  background-color: lightblue;
+}
+
+.welcome {
+  margin: 5px;
+}
+
+.newUser_login_div {
+  display: flex;
+  padding: 5px;
+}
+
+.app {
   display: flex;
   flex-direction: column;
 }
@@ -35,20 +36,27 @@ body {
 .balance {
   display: flex;
   justify-content: space-between;
-  font-size: 1.5rem;
-  grid-column: span 2; /* Span across both columns */
-  margin-bottom: 10px; /* Reduce spacing below the balance section */
+  padding: 10px;
+  background-color: aquamarine;
 }
+
+/* movements and operations div css */
+.movements-transfers-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  background-color: bisque;
+  height: auto;
+}
+
+/* movements */
 
 /* MOVEMENTS */
 .movements {
-  grid-row: 0; /* Ensure movements is directly below the balance */
-  grid-column: span 2; /* Span across both columns */
+  grid-row: 2 / span 3;
   background-color: #fff;
   border-radius: 1rem;
-  overflow-y: auto; /* Enable vertical scrolling if needed */
-  padding: 10px; /* Add padding inside the movements section */
-  margin-top: 0; /* Remove unnecessary margin */
+  overflow: scroll;
 }
 
 .movements__row {
@@ -88,50 +96,29 @@ body {
   margin-left: auto;
 }
 
-.operation {
-  border: 1px solid #ccc;
+/* operations css */
+.operations-container {
+  background-color: pink;
   padding: 10px;
+  width: 30;
 }
 
-.summary {
-  grid-column: span 2; /* Span across the entire width */
+.operation {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #ccc;
-  padding: 10px 0;
+  flex-direction: column;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Add spacing between labels and inputs */
 }
 
-.form_label {
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 5px; /* Space between label and input */
-}
+/* Summary CSS */
 
-.form_input {
-  padding: 8px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button.form_btn {
-  margin-top: 10px; /* Add some spacing above buttons */
-  padding: 10px;
-  font-size: 1rem;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button.form_btn:hover {
-  background-color: #45a049;
+.summary {
+  display: flex;
+  justify-content: space-around;
+  background-color: chartreuse;
+  height: 10vh;
+  align-items: center;
 }

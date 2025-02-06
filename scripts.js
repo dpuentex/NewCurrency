@@ -99,7 +99,7 @@ const displayMovements = function (movements) {
       i + 1
     } ${type}</div>
       
-          <div class="movements__value">${mov}</div>
+          <div class="movements__value">$ ${mov}</div>
         </div>`;
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
