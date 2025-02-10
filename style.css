@@ -4,6 +4,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  --primary-color: black;
+  --secondary-color: greenyellow;
+  --third-color: lightgrey;
+  --primary-text-color: black;
+  --secondary-text-color: white;
+  --third-text-color: greenyellow;
+}
 
 /* Set body styles */
 body {
@@ -26,6 +34,57 @@ body {
 .newUser_login_div {
   display: flex;
   padding: 5px;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.create-login-text {
+  font-weight: bold;
+  text-align: center;
+  padding: 3px;
+}
+.createUsernameForm,
+.loginUserForm {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inputsAcc {
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  padding: 10px;
+  outline: none;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.inputsAcc:focus {
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btnCreateAcc,
+.btnLogin {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 30px;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 15px;
+  transition: border-color 0.3s ease-in-out, border 0.3s ease-in-out,
+    color 0.3s ease-in-out, background-color 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btnCreateAcc:hover,
+.btnLogin:hover {
+  color: var(--third-text-color);
+  background-color: var(--primary-color);
+  border: solid;
+  border-color: var(--secondary-color);
 }
 
 .app {
