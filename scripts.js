@@ -136,23 +136,26 @@ const calcDisplaySummary = function (accounts) {
   summaryValueOut.textContent = balanceOut;
 };
 
-calcDisplaySummary(accounts[0]);
-
 btnTransfer.addEventListener("click", function (e) {
   e.preventDefault();
   const amount = Number(transferAmountInput.value);
-  const reciverAcc = accounts.find(
-    (acc) => acc.username === transferAmountInput.value
+  const reciverAcc = accounts.find((acc) => acc.username === transferTo.value);
+  transferTo.value = transferAmountInput.value = "";
+
+  const currentBalance = currentAccount.balance.reduce(
+    (acc, mov) => acc + mov,
+    0
   );
-  transferAmountInput.value = transferAmountInput.value = "";
 
   if (
     amount > 0 &&
     reciverAcc &&
-    currentAccount.balance >= amount &&
+    currentBalance >= amount &&
     reciverAcc?.username !== currentAccount.username
   ) {
     currentAccount.balance.push(-amount);
-    reciverAcc.movements.push(amount);
+    reciverAcc.balance.push(amount);
+    console.log("Transfer done");
+    displayMovements(currentAccount.balance);
   }
 });

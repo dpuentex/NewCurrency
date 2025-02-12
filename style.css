@@ -24,7 +24,8 @@ body {
 }
 
 .navigationBar {
-  background-color: lightblue;
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
 }
 
 .welcome {
@@ -93,19 +94,25 @@ body {
 }
 
 .balance {
+  height: 100px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  background-color: aquamarine;
+  padding: 30px;
+  background-color: var(--secondary-color);
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 /* movements and operations div css */
 .movements-transfers-container {
   display: flex;
-  justify-content: space-evenly;
-  padding: 10px;
-  background-color: bisque;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: var(--primary-color);
   height: auto;
+  gap: 20px;
 }
 
 /* movements */
@@ -113,9 +120,10 @@ body {
 /* MOVEMENTS */
 .movements {
   grid-row: 2 / span 3;
-  background-color: #fff;
+  background-color: var(--third-color);
   border-radius: 1rem;
   overflow: scroll;
+  width: 100%;
 }
 
 .movements__row {
@@ -157,9 +165,11 @@ body {
 
 /* operations css */
 .operations-container {
-  background-color: pink;
-  padding: 10px;
-  width: 30;
+  background-color: var(--third-color);
+  padding: 20px;
+  width: 400px;
+  color: white;
+  border-radius: 15px;
 }
 
 .operation {
@@ -170,14 +180,70 @@ body {
 .form {
   display: flex;
   flex-direction: column;
+  border-bottom: solid black 3px;
 }
 
+.form_input {
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  margin: 10px 0 20px;
+}
+
+.form_btn {
+  height: 40px;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 15px;
+  transition: border-color 0.3s ease-in-out, border 0.3s ease-in-out,
+    color 0.3s ease-in-out, background-color 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.form_btn:hover {
+  color: var(--third-text-color);
+  background-color: var(--primary-color);
+  border: solid;
+  border-color: var(--secondary-color);
+}
+
+.form_label {
+  font-size: 20px;
+}
 /* Summary CSS */
 
 .summary {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 50px;
   background-color: chartreuse;
   height: 10vh;
   align-items: center;
+}
+
+.summary_label {
+  text-align: center;
+  padding: 10px;
+  border-radius: 20px;
+  width: 100px;
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
+  font-size: 20px;
+}
+
+.summary_value {
+  color: var(--primary-color);
+  font-size: 20px;
+}
+
+.btn-sort {
+  text-align: center;
+  padding: 10px;
+  border-radius: 20px;
+  width: 80px;
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
 }
