@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-color: black;
+}
+
+.welcomeContainer {
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  top: -20%;
+  background-color: lightslategray;
+  border-radius: 15px;
+}
+
+.welcomeContainer h1 {
+  font-size: 1.6rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.welcomeContainer p {
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.welcomeContainer a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1rem;
+  color: greenyellow;
+  margin: 0 10px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}

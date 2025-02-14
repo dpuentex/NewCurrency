@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-color: black;
+}
+
+.newUserDiv {
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  top: -20%;
+  background-color: lightslategray;
+  border-radius: 15px;
+}
