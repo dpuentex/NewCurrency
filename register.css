@@ -18,9 +18,43 @@ body {
   text-align: center;
   padding: 2rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 550px;
   position: relative;
   top: -20%;
   background-color: lightslategray;
   border-radius: 15px;
+}
+
+.create-login-text {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.inputsAcc {
+  margin: 6px;
+  border-style: none;
+  border: none;
+  height: 40px;
+  width: auto;
+  border-radius: 15px;
+  padding: 6px;
+}
+
+.btnCreateAcc {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  height: 30px;
+  width: 100px;
+  border: none;
+  border-style: none;
+  border-radius: 15px;
+  background-color: greenyellow;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btnCreateAcc:hover {
+  background-color: black;
+  color: greenyellow;
 }
