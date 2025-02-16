@@ -23,27 +23,54 @@ body {
   flex-direction: column;
 }
 
+.welcome-bar-div {
+  background-color: greenyellow;
+  display: flex;
+  color: black;
+  flex-direction: row;
+}
+
+.logoDiv {
+  display: flex;
+  align-items: end;
+  padding: 20px;
+}
+
+.bankNavLogo {
+  width: 5%;
+}
+
+.logoText {
+  font-size: 30px;
+
+  font-weight: bold;
+}
+
+.welcome-str {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-right: 50px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
 .navigationBar {
   background-color: var(--primary-color);
   color: var(--secondary-text-color);
 }
 
-.welcome {
-  margin: 5px;
-}
-
 .newUser_login_div {
   display: flex;
-  padding: 5px;
+  margin: 20px;
   justify-content: flex-end;
-  gap: 20px;
 }
 
 .create-login-text {
   font-weight: bold;
-  text-align: center;
   padding: 3px;
+  margin-bottom: 5px;
 }
+
 .createUsernameForm,
 .loginUserForm {
   display: flex;
@@ -55,7 +82,7 @@ body {
   height: 30px;
   border-radius: 15px;
   border: none;
-  padding: 10px;
+  padding: 15px;
   outline: none;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;

@@ -7,11 +7,23 @@
 html,
 body {
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: sans-serif;
   background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.registerHeader {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  background-color: greenyellow;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .newUserDiv {
@@ -19,10 +31,9 @@ body {
   padding: 2rem;
   width: 100%;
   max-width: 550px;
-  position: relative;
-  top: -20%;
   background-color: lightslategray;
   border-radius: 15px;
+  margin-top: 150px;
 }
 
 .create-login-text {
@@ -36,17 +47,18 @@ body {
   border-style: none;
   border: none;
   height: 40px;
-  width: auto;
+  width: 200px;
   border-radius: 15px;
   padding: 6px;
+  box-shadow: 3;
 }
 
 .btnCreateAcc {
   font-size: 20px;
   font-weight: bold;
   margin-top: 15px;
-  height: 30px;
-  width: 100px;
+  height: 40px;
+  width: 200px;
   border: none;
   border-style: none;
   border-radius: 15px;
