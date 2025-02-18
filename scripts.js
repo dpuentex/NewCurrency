@@ -1,18 +1,11 @@
 const appContainer = document.querySelector(".app");
-const firstNameInput = document.querySelector(".firstName");
-const lastNameInput = document.querySelector(".lastName");
-const createUsernameInput = document.querySelector(".createUsername");
-const createPinInput = document.querySelector(".createPin");
-const firstDepositInput = document.querySelector(".deposit");
-const creditScoreInput = document.querySelector(".creditScore");
-const btnMakeAcc = document.querySelector(".btnCreateAcc");
 const loginUsernameInput = document.querySelector(".usernameInput");
 const loginPinInput = document.querySelector(".pinInput");
 const btnLogin = document.querySelector(".btnLogin");
-const welcomeLabel = document.querySelector(".welcome");
+const welcomeLabel = document.querySelector(".welcome-str");
 const labelBalanceValue = document.querySelector(".balance_value");
 const containerMovements = document.querySelector(".movements");
-
+const app = document.querySelector(".app");
 //Transfers
 const transferTo = document.querySelector(".form_input--to");
 const transferAmountInput = document.querySelector(".form_input--amount");
@@ -30,10 +23,7 @@ const summaryValueOut = document.querySelector(".summary_value-out");
 const summaryValueInterest = document.querySelector(".summary_value-interest");
 const btnSort = document.querySelector(".btn-sort");
 
-// New accounts
-
-//Creat User Function
-const accounts = [
+const accounts = JSON.parse(localStorage.getItem("bankAccounts")) || [
   {
     firstName: "Diego",
     lastName: "Puente",
@@ -43,7 +33,8 @@ const accounts = [
     username: "dpuente",
     pin: Number(1000),
     balance: [3000, 1000, -200, 230, -340],
-    creditScore: Number(700),
+    creditScore: Number(750),
+    interestRate: 2,
   },
   {
     firstName: "Dylan",
@@ -55,34 +46,9 @@ const accounts = [
     pin: Number(2000),
     balance: [1000, 300, -400, 230, -500, 600],
     creditScore: Number(650),
+    interestRate: 5,
   },
 ];
-
-console.log(accounts[0]);
-const createUser = function () {
-  const newFirstName = firstNameInput.value;
-  const newLastName = lastNameInput.value;
-  const newUsername = createUsernameInput.value;
-  const newPin = createPinInput.value;
-  const firstDeposit = firstDepositInput.value;
-  const currentCreditScore = creditScoreInput.value;
-  const newUserAccount = {
-    firstName: newFirstName,
-    lastName: newLastName,
-    fullName: `${newFirstName} ${newLastName}`,
-    username: newUsername,
-    pin: Number(newPin),
-    balance: [firstDeposit],
-    creditScore: currentCreditScore,
-  };
-  accounts.push(newUserAccount);
-  console.log(accounts);
-};
-
-btnMakeAcc.addEventListener("click", function (e) {
-  e.preventDefault();
-  createUser();
-});
 
 const displayBalance = function (accounts) {
   const balance = accounts.balance.reduce((acc, mov) => acc + mov);
@@ -108,32 +74,45 @@ const displayMovements = function (movements) {
 let currentAccount;
 btnLogin.addEventListener("click", function (e) {
   e.preventDefault();
+
+  // const accounts = JSON.parse(localStorage.getItem("bankAccounts")) || [];
   currentAccount = accounts.find(
     (acc) => acc.username === loginUsernameInput.value
   );
+  console.log("Attemted login with:", loginUsernameInput.value);
+  console.log("Current Accounts:", accounts);
+  console.log("Found Account:", currentAccount);
+
   if (currentAccount?.pin === Number(loginPinInput.value)) {
     welcomeLabel.textContent = `Welcome back ${currentAccount.firstName}`;
     appContainer.style.opacity = 100;
-  } else {
-    welcomeLabel.textContent = `Please use correct username and password`;
-    return;
-  }
-  displayMovements(currentAccount.balance);
 
-  displayBalance(currentAccount);
+    app.classList.remove("app-hidden");
+    displayMovements(currentAccount.balance);
+    displayBalance(currentAccount);
+    calcDisplaySummary(currentAccount);
+  } else {
+    console.log("Login Failed: Incorrect username or pin");
+    welcomeLabel.textContent = `Please use correct username and password`;
+  }
 });
 
 const calcDisplaySummary = function (accounts) {
   const balanceIn = accounts.balance
     .filter((mov) => mov > 0)
-    .reduce((acc, mov) => acc + mov);
+    .reduce((acc, mov) => acc + mov, 0);
 
   summaryValueIn.textContent = balanceIn;
 
   const balanceOut = accounts.balance
     .filter((mov) => mov < 0)
-    .reduce((acc, mov) => acc + mov);
+    .reduce((acc, mov) => acc + mov, 0);
   summaryValueOut.textContent = balanceOut;
+
+  const totalBalance = accounts.balance.reduce((acc, mov) => acc + mov, 0);
+  const interest = (totalBalance * accounts.interestRate) / 100;
+
+  summaryValueInterest.textContent = interest.toFixed(2);
 };
 
 btnTransfer.addEventListener("click", function (e) {
@@ -157,5 +136,17 @@ btnTransfer.addEventListener("click", function (e) {
     reciverAcc.balance.push(amount);
     console.log("Transfer done");
     displayMovements(currentAccount.balance);
+    displayBalance(currentAccount);
+  }
+});
+
+btnLoan.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  const amount = Number(loanAmount.value);
+  if (amount > 0 && currentAccount.balance.some((mov) => mov >= amount * 0.1)) {
+    currentAccount.balance.push(amount);
+    displayMovements(currentAccount.balance);
+    displayBalance(currentAccount);
   }
 });
