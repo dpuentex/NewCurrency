@@ -16,7 +16,10 @@ const accounts = JSON.parse(localStorage.getItem("bankAccounts")) || [
     },
     username: "dpuente",
     pin: Number(1000),
-    balance: [3000, 1000, -200, 230, -340],
+    balance: [
+      3000, 1000, -200, 230, -340, 600, 200, 500, 4000, -1300, 6430, -2321, 533,
+      -250,
+    ],
     creditScore: Number(750),
     interestRate: 2,
   },

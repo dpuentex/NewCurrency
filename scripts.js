@@ -32,7 +32,10 @@ const accounts = JSON.parse(localStorage.getItem("bankAccounts")) || [
     },
     username: "dpuente",
     pin: Number(1000),
-    balance: [3000, 1000, -200, 230, -340],
+    balance: [
+      3000, 1000, -200, 230, -340, 600, 200, 500, 4000, -1300, 6430, -2321, 533,
+      -250,
+    ],
     creditScore: Number(750),
     interestRate: 2,
   },
@@ -50,6 +53,12 @@ const accounts = JSON.parse(localStorage.getItem("bankAccounts")) || [
   },
 ];
 
+const updateUI = function (acc) {
+  displayMovements(currentAccount.balance);
+  displayBalance(acc);
+  calcDisplaySummary(acc);
+};
+
 const displayBalance = function (accounts) {
   const balance = accounts.balance.reduce((acc, mov) => acc + mov);
   labelBalanceValue.textContent = balance;
@@ -65,7 +74,7 @@ const displayMovements = function (movements) {
       i + 1
     } ${type}</div>
       
-          <div class="movements__value">$ ${mov}</div>
+          <div class="movements__value">$${mov}</div>
         </div>`;
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
@@ -88,9 +97,7 @@ btnLogin.addEventListener("click", function (e) {
     appContainer.style.opacity = 100;
 
     app.classList.remove("app-hidden");
-    displayMovements(currentAccount.balance);
-    displayBalance(currentAccount);
-    calcDisplaySummary(currentAccount);
+    updateUI(currentAccount);
   } else {
     console.log("Login Failed: Incorrect username or pin");
     welcomeLabel.textContent = `Please use correct username and password`;
@@ -135,8 +142,7 @@ btnTransfer.addEventListener("click", function (e) {
     currentAccount.balance.push(-amount);
     reciverAcc.balance.push(amount);
     console.log("Transfer done");
-    displayMovements(currentAccount.balance);
-    displayBalance(currentAccount);
+    updateUI(currentAccount);
   }
 });
 
@@ -146,7 +152,17 @@ btnLoan.addEventListener("click", function (e) {
   const amount = Number(loanAmount.value);
   if (amount > 0 && currentAccount.balance.some((mov) => mov >= amount * 0.1)) {
     currentAccount.balance.push(amount);
-    displayMovements(currentAccount.balance);
-    displayBalance(currentAccount);
+    updateUI(currentAccount);
+  }
+});
+//Close Acc button
+
+//
+
+//Hover off account movement
+
+containerMovements.addEventListener("click", function (e) {
+  if (e.target.classList.contains("movement__type")) {
+    console.log("clicked over:", e.target.textContent);
   }
 });
