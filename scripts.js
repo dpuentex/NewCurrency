@@ -5,6 +5,7 @@ const btnLogin = document.querySelector(".btnLogin");
 const welcomeLabel = document.querySelector(".welcome-str");
 const labelBalanceValue = document.querySelector(".balance_value");
 const containerMovements = document.querySelector(".movements");
+
 const app = document.querySelector(".app");
 //Transfers
 const transferTo = document.querySelector(".form_input--to");
@@ -162,7 +163,22 @@ btnLoan.addEventListener("click", function (e) {
 //Hover off account movement
 
 containerMovements.addEventListener("click", function (e) {
-  if (e.target.classList.contains("movement__type")) {
-    console.log("clicked over:", e.target.textContent);
+  const clicked = e.target.closest(".movements__row");
+  if (!clicked) return;
+
+  const movementType = clicked.querySelector(".movements__type");
+  const movementValue = clicked.querySelector(".movements__value");
+
+  if (!movementType || !movementValue) return;
+
+  if (
+    movementType.classList.contains("movements__type--withdrawal") ||
+    movementType.classList.contains("movements__type--deposit")
+  ) {
+    document.querySelectorAll(".movements__value").forEach((el) => {
+      el.classList.remove("pop-out");
+    });
   }
+
+  movementValue.classList.toggle("pop-out");
 });
