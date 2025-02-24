@@ -162,23 +162,27 @@ btnLoan.addEventListener("click", function (e) {
 
 //Hover off account movement
 
-containerMovements.addEventListener("click", function (e) {
-  const clicked = e.target.closest(".movements__row");
-  if (!clicked) return;
+containerMovements.addEventListener("mouseover", function (e) {
+  const movementType = e.target.closest(
+    ".movements__type--withdrawal, .movements__type--deposit"
+  );
 
-  const movementType = clicked.querySelector(".movements__type");
-  const movementValue = clicked.querySelector(".movements__value");
+  if (!movementType) return;
 
-  if (!movementType || !movementValue) return;
+  const movementRow = movementType.closest(".movements__row");
+  if (!movementRow) return;
 
-  if (
-    movementType.classList.contains("movements__type--withdrawal") ||
-    movementType.classList.contains("movements__type--deposit")
-  ) {
-    document.querySelectorAll(".movements__value").forEach((el) => {
-      el.classList.remove("pop-out");
-    });
+  const movementValue = movementRow.querySelector(".movements__value");
+  if (!movementValue) return;
+
+  document.querySelectorAll(".movements__value").forEach((el) => {
+    el.classList.remove("pop-out", "withdrawal-bg", "deposit-bg");
+  });
+
+  if (movementType.classList.contains("movements__type--withdrawal")) {
+    movementValue.classList.add("withdrawal-bg");
+  } else if (movementType.classList.contains("movements__type--deposit")) {
+    movementValue.classList.add("deposit-bg");
   }
-
-  movementValue.classList.toggle("pop-out");
+  movementValue.classList.add("pop-out");
 });
