@@ -186,3 +186,13 @@ containerMovements.addEventListener("mouseover", function (e) {
   }
   movementValue.classList.add("pop-out");
 });
+
+containerMovements.addEventListener("mouseout", function (e) {
+  const movementRow = e.target.closest(".movements__row");
+  if (!movementRow) return;
+
+  const movementValue = movementRow.querySelector(".movements__value");
+  if (!movementValue) return;
+
+  movementValue.classList.remove("pop-out", "withdrawal-bg", "deposit-bg");
+});
