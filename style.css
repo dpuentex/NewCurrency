@@ -116,12 +116,32 @@ body {
 }
 
 .navigationBar {
-  height: 50px;
-  background-color: var(--secondary-color);
+  height: 60px;
+  background-color: var(--primary-color);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  color: var(--primary-text-color);
+  padding-bottom: 20px;
+}
+
+.navLinks,
+.navLink {
+  width: auto;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  color: var(--secondary-text-color);
+  outline: none;
+  text-decoration: none;
+  font-size: 20px;
+
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.navLinks:hover,
+.navLink:hover {
+  transform: scale(1.5);
+  background-color: var(--secondary-color);
 }
 
 .app {

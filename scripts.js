@@ -62,7 +62,7 @@ const updateUI = function (acc) {
 
 const displayBalance = function (accounts) {
   const balance = accounts.balance.reduce((acc, mov) => acc + mov);
-  labelBalanceValue.textContent = balance;
+  labelBalanceValue.textContent = `$${balance}`;
 };
 
 const displayMovements = function (movements) {
