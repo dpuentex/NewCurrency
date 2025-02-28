@@ -28,28 +28,30 @@ body {
   display: flex;
   color: black;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
 }
 
 .logoDiv {
   display: flex;
-  align-items: end;
-  padding: 20px;
+  align-items: center;
 }
 
 .bankNavLogo {
-  width: 5%;
+  width: 50px;
+
+  margin-right: 5px;
+  margin-bottom: 10px;
 }
 
 .logoText {
   font-size: 30px;
-
   font-weight: bold;
 }
 
 .welcome-str {
   font-size: 30px;
-  margin-top: 20px;
-  margin-right: 50px;
   white-space: nowrap;
   font-weight: bold;
 }
@@ -145,7 +147,7 @@ body {
 }
 
 .homeTitleDiv {
-  padding: 1em;
+  padding: 2em;
   background-color: black;
   text-align: center;
   color: var(--secondary-text-color);
@@ -209,7 +211,7 @@ body {
 
 .features-section {
   text-align: center;
-  padding: 40px;
+  padding: 20px;
   background-color: var(--third-color);
 }
 

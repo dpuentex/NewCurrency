@@ -65,9 +65,10 @@ const displayBalance = function (accounts) {
   labelBalanceValue.textContent = `$${balance}`;
 };
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.textContent = "";
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
     const html = `<div class="movements__row">
@@ -94,7 +95,7 @@ btnLogin.addEventListener("click", function (e) {
   console.log("Found Account:", currentAccount);
 
   if (currentAccount?.pin === Number(loginPinInput.value)) {
-    welcomeLabel.textContent = `Welcome back ${currentAccount.firstName}`;
+    welcomeLabel.textContent = `Welcome back, ${currentAccount.firstName}`;
     appContainer.style.opacity = 100;
 
     app.classList.remove("app-hidden");
@@ -158,19 +159,24 @@ btnLoan.addEventListener("click", function (e) {
 });
 //Close Acc button
 
-//
+//SORT BUTTOM
+let sorted = false;
+btnSort.addEventListener("click", function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.balance, !sorted);
+  sorted = !sorted;
+});
 
 //Hover off account movement
 
 containerMovements.addEventListener("mouseover", function (e) {
-  const movementType = e.target.closest(
+  const movementRow = e.target.closest(".movements__row");
+  if (!movementRow) return;
+
+  const movementType = movementRow.querySelector(
     ".movements__type--withdrawal, .movements__type--deposit"
   );
-
   if (!movementType) return;
-
-  const movementRow = movementType.closest(".movements__row");
-  if (!movementRow) return;
 
   const movementValue = movementRow.querySelector(".movements__value");
   if (!movementValue) return;
