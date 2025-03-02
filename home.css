@@ -5,12 +5,12 @@
   box-sizing: border-box;
 }
 :root {
-  --primary-color: black;
-  --secondary-color: greenyellow;
-  --third-color: lightgrey;
-  --primary-text-color: black;
-  --secondary-text-color: white;
-  --third-text-color: greenyellow;
+  --primary-color: #04deb1;
+  --secondary-color: #041c34;
+  --third-color: white;
+  --primary-text-color: #041c34;
+  --secondary-text-color: #04deb1;
+  --third-text-color: white;
 }
 
 /* Set body styles */
@@ -24,9 +24,9 @@ body {
 }
 
 .welcome-bar-div {
-  background-color: greenyellow;
+  background-color: #011e36;
   display: flex;
-  color: black;
+  color: #04deb1;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -39,15 +39,7 @@ body {
 }
 
 .bankNavLogo {
-  width: 50px;
-
-  margin-right: 5px;
-  margin-bottom: 10px;
-}
-
-.logoText {
-  font-size: 30px;
-  font-weight: bold;
+  width: 60%;
 }
 
 .welcome-str {
@@ -57,16 +49,20 @@ body {
 }
 
 .loginBar {
+  width: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: flex-end;
-  background-color: var(--primary-color);
-  color: var(--secondary-text-color);
+  background-color: #041c34;
+  color: var(--third-text-color);
 }
 
 .login_div {
-  width: 15vw;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
   margin: 20px;
 }
 
@@ -78,8 +74,9 @@ body {
 
 .loginUserForm {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 4px;
+  align-items: center;
 }
 
 .inputsAcc {
@@ -97,10 +94,11 @@ body {
 }
 
 .btnLogin {
+  width: 100px;
   margin-top: 5px;
   margin-bottom: 5px;
   height: 30px;
-  background-color: var(--secondary-color);
+  background-color: #04deb1;
   border: none;
   border-radius: 15px;
   transition: border-color 0.3s ease-in-out, border 0.3s ease-in-out,
@@ -108,34 +106,35 @@ body {
     transform 0.3s ease-in-out;
   font-size: 20px;
   font-weight: bold;
+  vertical-align: middle;
 }
 
 .btnLogin:hover {
-  color: var(--third-text-color);
-  background-color: var(--primary-color);
+  color: #04deb1;
+  background-color: #041c34;
   border: solid;
-  border-color: var(--secondary-color);
+  border-color: #04deb1;
 }
 
 .navigationBar {
-  height: 60px;
-  background-color: var(--primary-color);
+  height: 80px;
+  background-color: #04deb1;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding-bottom: 20px;
+  border-bottom: solid 2px #011e36;
 }
 
 .navLinks,
 .navLink {
   width: auto;
-  padding: 5px;
   border-radius: 5px;
   text-align: center;
-  color: var(--secondary-text-color);
+  color: var(--third-text-color);
   outline: none;
   text-decoration: none;
   font-size: 20px;
+  padding: 3px;
 
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
@@ -148,9 +147,9 @@ body {
 
 .homeTitleDiv {
   padding: 2em;
-  background-color: black;
+  background-color: var(--primary-color);
   text-align: center;
-  color: var(--secondary-text-color);
+  color: #041c34;
 }
 
 .titleTypingText {
@@ -191,8 +190,8 @@ body {
   display: inline-block;
   margin-top: 15px;
   padding: 12px 24px;
-  background-color: var(--secondary-color);
-  color: var(--primary-text-color);
+  background-color: #041c34;
+  color: var(--secondary-text-color);
   font-weight: bold;
   border-radius: 25px;
   text-decoration: none;
@@ -203,22 +202,33 @@ body {
 }
 
 .cta-button:hover {
-  background-color: var(--primary-color);
-  color: var(--secondary-text-color);
+  background-color: #04deb1;
+  color: #041c34;
   transform: scale(1.05);
-  border-color: greenyellow;
+  border-color: #041c34;
+}
+
+.card-promotion {
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary-color);
+}
+
+.card-promotion-img {
+  width: 100%;
+  height: 100%;
 }
 
 .features-section {
   text-align: center;
   padding: 20px;
-  background-color: var(--third-color);
+  background-color: var(--secondary-color);
 }
 
 .features-section h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: var(--primary-color);
+  color: var(--secondary-text-color);
 }
 
 .features-grid {
@@ -228,6 +238,7 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   justify-content: center;
+  cursor: pointer;
 }
 
 @media (min-width: 900px) {
@@ -242,7 +253,7 @@ body {
 }
 
 .feature {
-  background: white;
+  background: var(--primary-color);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
@@ -254,7 +265,7 @@ body {
   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.feature-icon {
+.features-icon {
   width: 60px;
   height: 60px;
   margin-bottom: 10px;
@@ -262,11 +273,100 @@ body {
 
 .feature h3 {
   font-size: 1.2rem;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   margin-bottom: 5px;
 }
 
 .feature p {
   font-size: 1rem;
   color: #555;
+}
+
+.feature-section {
+  padding: 60px 20px;
+  background-color: var(--secondary-color);
+  text-align: center;
+}
+
+.feature-content {
+  background-color: var(--primary-color);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.feature-content h3 {
+  font-size: 28px;
+  color: var(--primary-text-color);
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+}
+
+.feature-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--primary-text-color);
+  max-width: 700px;
+  margin-bottom: 20px;
+}
+
+.feature-image-list-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.feature-image {
+  display: flex;
+  justify-content: center;
+}
+
+.feature-img {
+  width: 70%;
+
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 5px solid var(--third-color);
+  transition: transform 0.3s ease;
+}
+
+.feature-img:hover {
+  transform: scale(1.05);
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.feature-list li {
+  font-size: 16px;
+  padding: 12px 15px;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+
+  transition: transform 0.2s ease, bakcground-color 0.2s ease;
+}
+
+.feature-list li:hover {
+  transform: translateX(-2px);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.feature-list li::before {
+  content: "✓";
+  margin-right: 10px;
+  color: var(--accent-color);
+  font-weight: bold;
 }
