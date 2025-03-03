@@ -4,26 +4,32 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary-color: #04deb1;
+  --secondary-color: #041c34;
+  --third-color: white;
+  --primary-text-color: #041c34;
+  --secondary-text-color: #04deb1;
+  --third-text-color: white;
+}
+
 html,
 body {
   height: 100%;
   font-family: sans-serif;
-  background-color: black;
+  background-color: var(--primary-color);
 }
 
 .welcomePage_header {
   display: flex;
   justify-content: center;
-  background-color: greenyellow;
+  background-color: var(--secondary-color);
   align-items: center;
+  padding: 20px;
 }
 
 .welcome-logo-image {
-  width: 100px;
-}
-
-.welcome-logo-text {
-  color: black;
+  width: 25%;
 }
 
 .welcomePage_container {
@@ -40,7 +46,7 @@ body {
   width: 100%;
   max-width: 400px;
   margin: auto;
-  background-color: lightslategray;
+  background-color: var(--secondary-color);
   border-radius: 15px;
   transform: translateY(-50%);
 }
@@ -59,6 +65,7 @@ body {
 
 .register-btn,
 .login-btn {
+  color: var(--primary-text-color);
   width: 130px;
   border: none;
   border-radius: 15px;
@@ -70,18 +77,19 @@ body {
   height: 35px;
   font-weight: bold;
   transition: color 0.3s ease;
-  background-color: greenyellow;
+  background-color: var(--primary-color);
   align-content: center;
   margin: 10px;
   margin-top: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
 .register-btn:hover,
 .login-btn:hover {
-  background-color: black;
-  color: greenyellow;
+  border: solid #04deb1;
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
 }
 
 .register-btn a,
@@ -93,21 +101,21 @@ body {
 a {
   text-decoration: none;
   color: black;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
 }
 
 a:hover {
-  color: greenyellow;
+  color: var(--primary-color);
 }
 
 .cookie-message {
-  height: 50px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  background-color: greenyellow;
-  color: black;
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
   font-size: 1.5rem;
   font-weight: 400;
 }
@@ -115,8 +123,8 @@ a:hover {
 .btn--close-cookie {
   padding: 0.5rem 1rem;
   border: none;
-  background-color: black;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--third-color);
   cursor: pointer;
   border-radius: 5px;
 }

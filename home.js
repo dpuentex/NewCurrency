@@ -7,6 +7,14 @@ const sections = featureTag.forEach((tag, index) => {
   });
 });
 
+//Go to card slider
+const btn_learnMore = document.querySelector(".btn-CardLearn");
+const cardSliderSection = document.querySelector(".card-slider-section");
+
+btn_learnMore.addEventListener("click", function () {
+  cardSliderSection.scrollIntoView({ behavior: "smooth" });
+});
+
 //slider
 const slider = function () {
   const slides = document.querySelectorAll(".slide");
